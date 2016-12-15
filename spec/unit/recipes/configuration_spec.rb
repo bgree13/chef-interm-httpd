@@ -6,7 +6,7 @@
 
 require 'spec_helper'
 
-describe 'httpd::default' do
+describe 'httpd::configuration' do
   context 'When all attributes are default, on an unspecified platform' do
     let(:chef_run) do
       runner = ChefSpec::ServerRunner.new
@@ -15,18 +15,6 @@ describe 'httpd::default' do
 
     it 'converges successfully' do
       expect { chef_run }.to_not raise_error
-    end
-
-    it 'includes the install recipe' do
-	expect(chef_run).to include_recipe('httpd::install')
-    end	
-
-    it 'includes the service recipe' do
-	expect(chef_run).to include_recipe('httpd::service')
-    end
-
-    it 'includes the configuration recipe' do
-	expect(chef_run).to include_recipe('httpd::configuration')
     end
   end
 end
